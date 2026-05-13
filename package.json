@@ -1,0 +1,53 @@
+{
+  "name": "cognit-flow",
+  "version": "0.1.0",
+  "description": "Self-hosted coding-agent orchestrator that turns a Linear backlog into autonomous Claude / Codex runs.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "bin": {
+    "cognit-flow": "./bin/cognit-flow"
+  },
+  "engines": {
+    "node": ">=20.10.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "build:bin": "tsc -p tsconfig.json && chmod +x ./bin/cognit-flow",
+    "dev": "tsx watch src/cli.ts",
+    "start": "tsx src/cli.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.0.2",
+    "@linear/sdk": "^39.0.0",
+    "execa": "^9.5.2",
+    "hono": "^4.6.14",
+    "js-yaml": "^4.1.0",
+    "liquidjs": "^10.20.0",
+    "pino": "^9.6.0",
+    "pino-roll": "^3.0.0",
+    "yargs": "^17.7.2",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.10.5",
+    "@types/yargs": "^17.0.33",
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "@typescript-eslint/parser": "^8.20.0",
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^9.18.0",
+    "memfs": "^4.15.3",
+    "msw": "^2.7.0",
+    "prettier": "^3.4.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  }
+}
