@@ -2,6 +2,7 @@
 
 > Self-hosted orchestration service that turns a [Linear](https://linear.app/) backlog into autonomous coding-agent runs — drives [Claude Code](https://docs.claude.com/en/docs/claude-code/overview) and [OpenAI Codex CLI](https://github.com/openai/codex) in isolated per-issue workspaces, with a real-time HTTP dashboard for live observability. **Built in TypeScript on Node.js**.
 
+[![CI](https://github.com/gxPan1006/cognit-flow/actions/workflows/ci.yml/badge.svg)](https://github.com/gxPan1006/cognit-flow/actions/workflows/ci.yml)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/Node-%3E%3D20.10-339933)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6)](https://www.typescriptlang.org/)
@@ -9,6 +10,8 @@
 > ⚠️ **Not affiliated with Cognition AI (Devin).** This project is a community-built coding-agent orchestrator. The name shares a Latin root, nothing more. If you came here looking for Devin, this is **not** that — Cognit Flow is a thin scheduler/observability layer that you point at *your own* model API key via Claude Code or Codex CLI.
 
 > 💡 **Sibling project:** Cognit Flow is the TypeScript implementation. The original Elixir/Phoenix version of the same orchestrator lives at [`gxPan1006/cognition-orchestrator`](https://github.com/gxPan1006/cognition-orchestrator) — same `WORKFLOW.md` contract, same Linear / Claude Code / Codex integrations. Pick whichever runtime fits your stack.
+
+![Cognit Flow dashboard — three concurrent agent runs, two retry queue entries, server-rendered HTML with SSE updates.](docs/dashboard.png)
 
 ---
 
