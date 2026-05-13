@@ -1,12 +1,45 @@
 {
   "name": "cognit-flow",
   "version": "0.1.0",
-  "description": "Self-hosted coding-agent orchestrator that turns a Linear backlog into autonomous Claude / Codex runs.",
-  "type": "module",
+  "description": "Self-hosted Linear → Claude Code / OpenAI Codex agent orchestrator. Per-issue workspaces, real-time HTTP dashboard. TypeScript / Node.js.",
+  "keywords": [
+    "linear",
+    "linear-app",
+    "coding-agent",
+    "claude-code",
+    "codex",
+    "openai-codex",
+    "anthropic",
+    "ai-agent",
+    "agent-orchestration",
+    "orchestrator",
+    "self-hosted",
+    "automation"
+  ],
+  "homepage": "https://github.com/gxPan1006/cognit-flow#readme",
+  "bugs": "https://github.com/gxPan1006/cognit-flow/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gxPan1006/cognit-flow.git"
+  },
+  "author": "Guoxun Pan <guoxun.pan@gmail.com>",
   "license": "Apache-2.0",
+  "type": "module",
   "bin": {
     "cognit-flow": "./bin/cognit-flow"
   },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "bin/",
+    "dist/",
+    "src/",
+    "LICENSE",
+    "NOTICE",
+    "README.md",
+    "SPEC.md",
+    "CHANGELOG.md"
+  ],
   "engines": {
     "node": ">=20.10.0"
   },
@@ -21,7 +54,8 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@hono/node-server": "^2.0.2",
@@ -49,5 +83,8 @@
     "tsx": "^4.19.2",
     "typescript": "^5.7.3",
     "vitest": "^2.1.8"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
