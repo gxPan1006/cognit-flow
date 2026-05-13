@@ -111,7 +111,11 @@ describe("workspace manager", () => {
         config: {
           workspace: { root },
           hooks: {
-            after_create: "sleep 30",
+            // `exec sleep …` replaces the wrapping `sh -lc` shell with sleep
+            // itself, so execa's SIGTERM on timeout kills the actual process
+            // (not a defunct child whose pipes block execa's promise on
+            // Linux CI). See workspace hook runner in src/workspace/index.ts.
+            after_create: "exec sleep 30",
             timeout_ms: 200,
           },
         },
