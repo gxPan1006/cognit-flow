@@ -104,23 +104,30 @@ describe("workspace manager", () => {
     expect(result.error.hook).toBe("after_create");
   });
 
-  it("times out a hook that exceeds the configured timeout", async () => {
-    workflowStore.set({
-      config: {
-        workspace: { root },
-        hooks: {
-          after_create: "sleep 30",
-          timeout_ms: 200,
+  it(
+    "times out a hook that exceeds the configured timeout",
+    async () => {
+      workflowStore.set({
+        config: {
+          workspace: { root },
+          hooks: {
+            after_create: "sleep 30",
+            timeout_ms: 200,
+          },
         },
-      },
-      prompt: "",
-      promptTemplate: "",
-    });
-    const result = await createForIssue({ id: "i1", identifier: "TIMEOUT-HOOK" });
-    expect(result.ok).toBe(false);
-    if (result.ok) return;
-    expect(result.error.kind).toBe("workspace_hook_timeout");
-  });
+        prompt: "",
+        promptTemplate: "",
+      });
+      const result = await createForIssue({ id: "i1", identifier: "TIMEOUT-HOOK" });
+      expect(result.ok).toBe(false);
+      if (result.ok) return;
+      expect(result.error.kind).toBe("workspace_hook_timeout");
+    },
+    // On Linux CI, execa's default forceKillAfterDelay (~5s) means the
+    // timed-out hook's subprocess can hang around longer than vitest's
+    // default 5s test timeout. Give the test plenty of headroom.
+    15_000,
+  );
 
   it("runs before_run hook on demand and propagates failures", async () => {
     const created = await createForIssue({ id: "i1", identifier: "BEFORE-1" });
