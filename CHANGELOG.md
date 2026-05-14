@@ -6,6 +6,20 @@ this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Changed
+
+- `DEFAULT_PROMPT_TEMPLATE` is now a full project-agnostic lifecycle workflow
+  prompt instead of a 6-line stub. The old default only stated the issue
+  identifier/title/body and gave the agent no instructions — no tracker state
+  transitions, no tracker access, no commit/push/PR steps, no completion bar —
+  so control-plane-generated `WORKFLOW.md` files (which embed this default) and
+  the runtime fallback both produced agents that could not drive Cognit Flow's
+  own issue lifecycle. The new default covers routing by state, the workpad
+  comment protocol, tracker access (`linear_graphql` tool or `LINEAR_API_KEY`),
+  hosted-upstream git topology, implement/publish steps, Merging/Rework flows,
+  the completion bar, and the blocker escape hatch — with no hardcoded
+  project/repo/port specifics.
+
 ## [0.1.0] — 2026-05-13
 
 Initial public release. Behavior-equivalent TypeScript implementation of the
